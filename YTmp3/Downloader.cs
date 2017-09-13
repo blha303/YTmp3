@@ -11,7 +11,7 @@ namespace YTmp3
         public Downloader()
         {
             InitializeComponent();
-            this.pathBox.Text = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Downloads");
+            this.pathBox.Text = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Music");
             Console.SetOut(new Writers.TextBoxWriter(this.outputBox));
         }
 
