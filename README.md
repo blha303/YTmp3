@@ -7,7 +7,7 @@ Usage
 -----
 * Get [ffmpeg](http://ffmpeg.zeranoe.com/builds/). Extract bin/{ffmpeg|ffprobe}.exe to the same folder as YTmp3.exe.
 * Get [youtube-dl](https://yt-dl.org/downloads/latest/youtube-dl.exe). Put youtube-dl.exe in the same folder as YTmp3.exe.
-* Run YTmp3.exe. Copy urls into the text box, select the destination folder, pick from the available format options and select Download.
+* Run [YTmp3.exe](https://github.com/blha303/YTmp3/releases). Copy urls into the text box, select the destination folder, pick from the available format options and select Download.
 
 License
 -------
