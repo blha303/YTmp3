@@ -23,7 +23,7 @@ namespace YTmp3
             MP4
         }
 
-        public void Download(string url, DLOptions quality)
+        public static void Download(string url, DLOptions quality, string path)
         {
             string arguments = string.Format("{0} --ffmpeg-location \"{1}\" --no-progress --continue --no-overwrites -o \"%(title)s.%(ext)s\" ", url, Application.StartupPath);
             switch (quality) {
@@ -41,11 +41,11 @@ namespace YTmp3
             }
 
             Process p = new Process();
-            p.StartInfo.FileName = "youtube-dl.exe";
+            p.StartInfo.FileName = "youtube-dl";
             p.StartInfo.Arguments = arguments;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.WorkingDirectory = this.pathBox.Text;
+            p.StartInfo.WorkingDirectory = path;
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.RedirectStandardError = true;
             p.OutputDataReceived += (sender, args) => Console.WriteLine(args.Data);
@@ -68,7 +68,7 @@ namespace YTmp3
         {
             foreach (string line in urlBox.Text.Split('\n'))
             {
-                Download(line, (DLOptions)comboBox1.SelectedValue);
+                Download(line, (DLOptions)comboBox1.SelectedValue, this.pathBox.Text);
             }
         }
     }
