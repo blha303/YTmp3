@@ -37,6 +37,7 @@ namespace YTmp3
             this.folderPickerBtn = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.outputBox = new System.Windows.Forms.TextBox();
+            this.cancelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // urlBox
@@ -69,7 +70,7 @@ namespace YTmp3
             // 
             // folderPickerBtn
             // 
-            this.folderPickerBtn.Location = new System.Drawing.Point(193, 394);
+            this.folderPickerBtn.Location = new System.Drawing.Point(193, 395);
             this.folderPickerBtn.Name = "folderPickerBtn";
             this.folderPickerBtn.Size = new System.Drawing.Size(12, 20);
             this.folderPickerBtn.TabIndex = 3;
@@ -80,9 +81,9 @@ namespace YTmp3
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Location = new System.Drawing.Point(212, 393);
+            this.comboBox1.Location = new System.Drawing.Point(212, 395);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(110, 21);
+            this.comboBox1.Size = new System.Drawing.Size(110, 20);
             this.comboBox1.TabIndex = 4;
             this.comboBox1.DataSource = Enum.GetValues(typeof(Downloader.DLOptions));
             // 
@@ -96,11 +97,22 @@ namespace YTmp3
             this.outputBox.Size = new System.Drawing.Size(343, 376);
             this.outputBox.TabIndex = 5;
             // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Location = new System.Drawing.Point(690, 395);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(75, 20);
+            this.cancelBtn.TabIndex = 6;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
             // Downloader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 427);
+            this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.outputBox);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.folderPickerBtn);
@@ -123,6 +135,7 @@ namespace YTmp3
         private System.Windows.Forms.Button folderPickerBtn;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox outputBox;
+        private System.Windows.Forms.Button cancelBtn;
     }
 }
 

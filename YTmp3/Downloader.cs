@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -8,6 +9,7 @@ namespace YTmp3
 {
     public partial class Downloader : Form
     {
+        private List<Process> plist = new List<Process>();
         public Downloader()
         {
             InitializeComponent();
@@ -23,7 +25,7 @@ namespace YTmp3
             MP4
         }
 
-        public static void Download(string url, DLOptions quality, string path)
+        public static Process Download(string url, DLOptions quality, string path)
         {
             string arguments = string.Format("{0} --ffmpeg-location \"{1}\" --no-progress --continue --no-overwrites -o \"%(title)s.%(ext)s\" ", url, Application.StartupPath);
             switch (quality) {
@@ -53,6 +55,7 @@ namespace YTmp3
             p.Start();
             p.BeginOutputReadLine();
             p.BeginErrorReadLine();
+            return p;
         }
 
         private void folderPickerBtn_Click(object sender, EventArgs e)
@@ -68,7 +71,18 @@ namespace YTmp3
         {
             foreach (string line in urlBox.Text.Split('\n'))
             {
-                Download(line, (DLOptions)comboBox1.SelectedValue, this.pathBox.Text);
+                plist.Add(Download(line, (DLOptions)comboBox1.SelectedValue, this.pathBox.Text));
+            }
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            foreach (Process p in plist)
+            {
+                if (!p.HasExited)
+                {
+                    p.Kill();
+                }
             }
         }
     }
