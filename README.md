@@ -1,6 +1,8 @@
 YTmp3
 =====
 
+![Preview](https://raw.githubusercontent.com/blha303/YTmp3/master/YTmp3-screenshot.PNG)
+
 For exclusive use to download non-copyrighted tracks like [stuff from this channel](https://www.youtube.com/channel/UCht8qITGkBvXKsR1Byln-wA/videos). Using this to download copyrighted tracks is a bad idea apparently.
 
 Usage
