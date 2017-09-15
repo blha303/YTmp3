@@ -15,6 +15,7 @@ namespace YTmp3
             InitializeComponent();
             this.pathBox.Text = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Music");
             Console.SetOut(new Writers.TextBoxWriter(this.outputBox));
+            Application.ApplicationExit += new System.EventHandler(this.cancelBtn_Click);
         }
 
         public enum DLOptions

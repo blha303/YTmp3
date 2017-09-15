@@ -70,6 +70,7 @@ namespace YTmp3
             // 
             // folderPickerBtn
             // 
+            this.folderPickerBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.folderPickerBtn.Location = new System.Drawing.Point(193, 395);
             this.folderPickerBtn.Name = "folderPickerBtn";
             this.folderPickerBtn.Size = new System.Drawing.Size(12, 20);
@@ -79,13 +80,13 @@ namespace YTmp3
             // 
             // comboBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.DataSource = Enum.GetValues(typeof(Downloader.DLOptions)); ;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(212, 395);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(110, 20);
             this.comboBox1.TabIndex = 4;
-            this.comboBox1.DataSource = Enum.GetValues(typeof(Downloader.DLOptions));
             // 
             // outputBox
             // 
@@ -119,6 +120,8 @@ namespace YTmp3
             this.Controls.Add(this.downloadBtn);
             this.Controls.Add(this.pathBox);
             this.Controls.Add(this.urlBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Downloader";
             this.Text = "YTmp3";
             this.ResumeLayout(false);
@@ -138,4 +141,3 @@ namespace YTmp3
         private System.Windows.Forms.Button cancelBtn;
     }
 }
-
