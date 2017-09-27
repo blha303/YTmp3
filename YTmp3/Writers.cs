@@ -7,6 +7,7 @@ namespace YTmp3
 {
     class Writers
     {
+        // Console.Write pipe to textbox
         public class TextBoxWriter : TextWriter
         {
             private TextBox textbox;

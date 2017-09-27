@@ -13,6 +13,7 @@ namespace YTmp3
         public Downloader()
         {
             InitializeComponent();
+            // Defined here because, when included in Designer class, WYSIWYG editor expands USERPROFILE variable into C:\Users\Username for some reason
             this.pathBox.Text = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Music");
             Console.SetOut(new Writers.TextBoxWriter(this.outputBox));
             Application.ApplicationExit += new System.EventHandler(this.cancelBtn_Click);
@@ -26,6 +27,7 @@ namespace YTmp3
             MP4
         }
 
+        // If ffmpeg is not included in path, intermediate files such as .webm or DASH-format .m4a may be produced by this function
         public static Process Download(string url, DLOptions quality, string path)
         {
             string arguments = string.Format("{0} --ffmpeg-location \"{1}\" --no-progress --continue --no-overwrites -o \"%(title)s.%(ext)s\" ", url, Application.StartupPath);

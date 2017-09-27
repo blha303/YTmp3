@@ -49,10 +49,13 @@ namespace YTmp3
             this.urlBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.urlBox.Size = new System.Drawing.Size(403, 376);
             this.urlBox.TabIndex = 0;
+            // Example url: Never Gonna Hit Those Notes
             this.urlBox.Text = "https://www.youtube.com/watch?v=lXMskKTw3Bc";
             // 
             // pathBox
             // 
+            // pathBox.text is defined in Downloader init method for
+            // WYSIWYG editor bug workaround
             this.pathBox.Location = new System.Drawing.Point(13, 395);
             this.pathBox.Name = "pathBox";
             this.pathBox.Size = new System.Drawing.Size(192, 20);
@@ -80,7 +83,8 @@ namespace YTmp3
             // 
             // comboBox1
             // 
-            this.comboBox1.DataSource = Enum.GetValues(typeof(Downloader.DLOptions)); ;
+            // WYSIWYG editor will expand this enum into the DataSource attribute on every change. Change it back to Enum.GetValues(typeof(Downloader.DLOptions))
+            this.comboBox1.DataSource = Enum.GetValues(typeof(Downloader.DLOptions));
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(212, 395);
