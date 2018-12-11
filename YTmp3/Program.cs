@@ -22,7 +22,7 @@ namespace YTmp3
                     if (arg[0] == '/') {
                         if (arg[1] == 'h' || arg[1] == '?')
                         {
-                            Console.WriteLine("YTmp3 by Steven Smith");
+                            Console.WriteLine("YTmp3");
                             Console.WriteLine("Usage: YTmp3 <urls...> [/h] [/q{" + qualityoptions + "}]");
                             return;
                         }
