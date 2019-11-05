@@ -37,13 +37,14 @@ namespace YTmp3
         [STAThread]
         public static void Main(string[] args)
         {
-            if (!ExistsOnPath("ffmpeg.exe") || !ExistsOnPath("ffprobe.exe")) {
-                alert("FFMPEG missing, opening browser. Please ensure ffmpeg.exe and ffprobe.exe are in the same location as YTmp3.exe and restart the program.");
+            if ((!ExistsOnPath("ffmpeg.exe") && !ExistsOnPath("ffmpeg")) ||
+                (!ExistsOnPath("ffprobe.exe") && !ExistsOnPath("ffprobe"))) {
+                alert("FFMPEG missing, opening browser. Please ensure ffmpeg and ffprobe are in the same location as YTmp3.exe and restart the program.");
                 System.Diagnostics.Process.Start("http://ffmpeg.zeranoe.com/builds/");
                 return;
             }
-            if (!ExistsOnPath("youtube-dl.exe")) {
-                alert("youtube-dl missing, opening browser. Please ensure youtube-dl.exe is in the same location as YTmp3.exe and restart the program.");
+            if (!ExistsOnPath("youtube-dl.exe") && !ExistsOnPath("youtube-dl")) {
+                alert("youtube-dl missing, opening browser. Please ensure youtube-dl is in the same location as YTmp3.exe and restart the program.");
                 System.Diagnostics.Process.Start("https://yt-dl.org/downloads/latest/youtube-dl.exe");
                 return;
             }
