@@ -10,6 +10,7 @@ namespace YTmp3
     public partial class Downloader : Form
     {
         private List<Process> plist = new List<Process>();
+
         public Downloader()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace YTmp3
 
         public static Process Download(string url, DLOptions quality, string path)
         {
-            string arguments = string.Format("{0} --ffmpeg-location \"{1}\" --no-progress --continue --no-overwrites -o \"%(title)s.%(ext)s\" ", url, Application.StartupPath);
+            string arguments = string.Format("{0} --ffmpeg-location \"{1}\" --no-progress --continue --no-overwrites -o \"%(title)s.%(ext)s\" ", url, Program.GetFullPath("ffmpeg.exe"));
             switch (quality) {
                 case DLOptions.MP3:
                     arguments += "--extract-audio --audio-format mp3";
@@ -44,7 +45,7 @@ namespace YTmp3
             }
 
             Process p = new Process();
-            p.StartInfo.FileName = "youtube-dl";
+            p.StartInfo.FileName = Program.GetFullPath("youtube-dl.exe", include_filename:true);
             p.StartInfo.Arguments = arguments;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.CreateNoWindow = true;
@@ -85,6 +86,11 @@ namespace YTmp3
                     p.Kill();
                 }
             }
+        }
+
+        private void infoBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

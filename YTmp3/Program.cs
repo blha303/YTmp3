@@ -13,17 +13,28 @@ namespace YTmp3
             return GetFullPath(fileName) != null;
         }
 
-        public static string GetFullPath(string fileName)
+        public static string GetFullPath(string fileName, bool include_filename = false)
         {
-            if (File.Exists(fileName))
-               return Path.GetFullPath(fileName);
+            if (File.Exists(fileName)) {
+                if (include_filename) {
+                    return Path.GetFullPath(fileName);
+                }
+                var path = new FileInfo(fileName).Directory.Name;
+                return path;
+            }
 
             var values = Environment.GetEnvironmentVariable("PATH");
             foreach (var path in values.Split(Path.PathSeparator))
             {
                 var fullPath = Path.Combine(path, fileName);
-                if (File.Exists(fullPath))
-                    return fullPath;
+                var check = File.Exists(fullPath);
+                if (check) {
+                    if (include_filename) {
+                        return fullPath;
+                    } else {
+                        return path;
+                    }
+                }
             }
             return null;
         }
@@ -37,13 +48,12 @@ namespace YTmp3
         [STAThread]
         public static void Main(string[] args)
         {
-            if ((!ExistsOnPath("ffmpeg.exe") && !ExistsOnPath("ffmpeg")) ||
-                (!ExistsOnPath("ffprobe.exe") && !ExistsOnPath("ffprobe"))) {
+            if (!ExistsOnPath("ffmpeg.exe")) {
                 alert("FFMPEG missing, opening browser. Please ensure ffmpeg and ffprobe are in the same location as YTmp3.exe and restart the program.");
                 System.Diagnostics.Process.Start("http://ffmpeg.zeranoe.com/builds/");
                 return;
             }
-            if (!ExistsOnPath("youtube-dl.exe") && !ExistsOnPath("youtube-dl")) {
+            if (!ExistsOnPath("youtube-dl.exe")) {
                 alert("youtube-dl missing, opening browser. Please ensure youtube-dl is in the same location as YTmp3.exe and restart the program.");
                 System.Diagnostics.Process.Start("https://yt-dl.org/downloads/latest/youtube-dl.exe");
                 return;
